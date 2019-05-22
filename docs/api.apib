@@ -1,0 +1,186 @@
+FORMAT: 1A
+HOST: http://localhost:3000
+
+# VUTTR API
+
+An application is a simple repository for selecting tools with their
+names, links, descriptions and tags.
+
+# Group Users
+
+## Users [/users]
+
+### Create User [POST]
+
++ Request Create user
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Attributes (UsersCreate)
+
++ Response 201 (application/json)
+    + Attributes (Users)
+
+# Group Sessions
+
+## Sessions [/sessions]
+
+### Authentication [POST]
+
++ Request Authentication of user
+
+    + Headers
+
+            Accept: application/json
+            Content-Type: application/json
+
+    + Attributes (UserSession)
+
++ Response 200 (application/json)
+    + Attributes (UsersAuth)
+
+# Group Tools
+
+## Tools [/tools]
+
+### List All Tools [GET]
+
++ Request List All Tools
+
+    + Headers
+
+            Authentication: Bearer JWT
+
++ Response 200 (application/json)
+    + Attributes
+        - data (array[Tools])
+
+## Tools [/tools{?tag}]
+
+### Filter By Tag [GET]
+
++ Parameters
+    + tag (optional, string, `node`)
+
++ Request Filter By Tag
+
+    + Headers
+
+            Authentication: Bearer JWT
+
++ Response 200 (application/json)
+    + Attributes
+        - data (array[Tools])
+
+### Create Tools [POST]
+
++ Request Create tool
+
+    + Headers
+
+            Authentication: Bearer JWT
+            Accept: application/json
+            Content-Type: application/json
+
+    + Attributes (ToolsCreate)
+
++ Response 201 (application/json)
+    + Attributes (Tools)
+
+## Tools [/tools/{id}]
+
+
+### List Tool by ID [GET]
+
++ Parameters
+    + id (required, string, `5cd80de6cfb8d9004768d0f7`)
+
++ Request List Tools by ID
+
+    + Headers
+
+            Authentication: Bearer JWT
+
++ Response 200 (application/json)
+    + Attributes
+        - data (Tools)
+
+### Update Tool by ID [PUT]
+
++ Parameters
+    + id (required, string, `5cd80de6cfb8d9004768d0f7`)
+
++ Request Update Tool
+
+    + Headers
+
+            Authentication: Bearer JWT
+
+    + Attributes (ToolsCreate)
+
++ Response 200 (application/json)
+    + Attributes
+        - data (Tools)
+
+### Delete Tools by ID [DELETE]
+
++ Parameters
+    + id (required, string, `5cd80de6cfb8d9004768d0f7`)
+
++ Request Delete Tool
+
+    + Headers
+
+            Authentication: Bearer JWT
+
++ Response 200
+
+
+# Data Structures
+
+## Users (object)
+
++ _id: 5ccb6f79be46412b200fe8ac (string, required)
++ name: Octavio Luiz (string, required)
++ email: octavio.luiz@admin.com (string, required)
++ password: 123456 (string, required)
++ createdAt: 2019-05-02T22:30:17.550Z (date, required)
+
+## UsersCreate (object)
+
++ name: Octavio Luiz (string, required)
++ email: octavio.luiz@admin.com (string, required)
++ password: 123456 (string, required)
+
+## UserSession (object)
+
++ email: octavio.luiz@admin.com (string, required)
++ password: 123456 (string, required)
+
+## UsersAuth (object)
+
++ _id: 5ccb6f79be46412b200fe8ac (string, required)
++ name: Octavio Luiz (string, required)
++ email: octavio.luiz@admin.com (string, required)
++ password: 123456 (string, required)
++ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjZDgwZDc1Y2ZiOGQ5MDA0NzY4ZDBmNSIsImlhdCI6MTU1NzY2MzEwMCwiZXhwIjoxNTU3NzQ5NTAwfQ.s2c3HPkzSQwxAbXh7HhS_g_AwqtO--IylvffwQYKCiE (string, required)
+
+## Tools (object)
+
++ _id: 5ccb6f79be46412b200fe8ac (string, required)
++ title: fastify (string, required)
++ link: https://www.fastify.io/ (string, required)
++ description: Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2. (string, required)
++ tags: [web, framework, node, http2, https, localhost] (array, required)
++ user (Users)
++ createdAt: 2019-05-02T22:30:17.550Z (date, required)
+
+## ToolsCreate (object)
+
++ title: fastify (string, required)
++ link: https://www.fastify.io/ (string, required)
++ description: Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2. (string, required)
++ tags: [web, framework, node, http2, https, localhost] (array, required)

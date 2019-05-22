@@ -1,0 +1,12 @@
+{
+    "name": "docs",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "rm -rf index.html && npx aglio -i api.apib --theme-full-width --no-theme-condense -o index.html"
+    },
+    "dependencies": {
+        "aglio": "^2.3.0"
+    }
+}
