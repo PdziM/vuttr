@@ -5,7 +5,7 @@ names, links, descriptions and tags.
 
 ## Getting Started
 
-For prerequisites you need to have installed **docker** and **docker-composer** to run the application. And a client rest to test it, like, the **postman** or the **insomnia**.
+For prerequisites you need to have installed **docker** and **docker-composer** to run the application. And a client rest to test it, like, **postman** or **insomnia**.
 
 ### Prerequisites
 
